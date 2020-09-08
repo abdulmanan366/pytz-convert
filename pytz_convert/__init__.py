@@ -13,6 +13,7 @@ __license__ = 'Apache 2.0'
 __python_required_version__ = (3, 0)
 
 from .timezone_utils import (
+    abbrev_tz_to_name,
     validate_tz_abbrev,
     validate_tz_name,
 

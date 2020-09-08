@@ -514,3 +514,26 @@ def validate_tz_abbrev(
         return True
 
     return False
+
+
+def abbrev_tz_to_name(
+    tz_abbrev
+):
+    """Timezone abbreviation to name.
+    """
+    if not tz_abbrev:
+        raise ValueError(
+            "Parameter 'tz_abbrev' is undefined."
+        )
+
+    for _tz_name in pytz.common_timezones:
+        _timezone = dtz.gettz(_tz_name)
+        now = dt.datetime.now(_timezone)
+
+        _tz_abbrev = now.strftime('%Z')
+        if tz_abbrev != _tz_abbrev:
+            continue
+
+        return _tz_name
+
+    return None
